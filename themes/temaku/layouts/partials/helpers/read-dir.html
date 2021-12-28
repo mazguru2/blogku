@@ -6,6 +6,6 @@
     {{- else -}}
         {{- $url := path.Join $path .Name -}}
         {{- $file := readFile $url -}}
-        {{- $scratch.Add "hbs-assets" (slice (dict "url" ($url | strings.TrimPrefix "/static") "revision" (md5 $file))) -}}
+        {{- $scratch.Add "bs-assets" (slice (dict "url" ($url | strings.TrimPrefix "/static") "revision" (md5 $file))) -}}
     {{- end -}}
 {{- end -}}

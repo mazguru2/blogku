@@ -20,18 +20,19 @@ url("/fonts/bootstrap-icons.woff?30af91bf14e37666a085fb8a161ff36d") format("woff
 }
 
 .bi-moon-fill::before { content: "\f494"; }
-.bi-moon-stars-fill::before { content: "\f495"; }
-.bi-moon-stars::before { content: "\f496"; }
 .bi-moon::before { content: "\f497"; }
-
-.bi-sun-fill::before { content: "\f5a1"; }
 .bi-sun::before { content: "\f5a2"; }
-.bi-sunglasses::before { content: "\f5a3"; }
-.bi-sunrise-fill::before { content: "\f5a4"; }
-.bi-sunrise::before { content: "\f5a5"; }
-.bi-sunset-fill::before { content: "\f5a6"; }
-.bi-sunset::before { content: "\f5a7"; }
-
+.bi-search::before { content: "\f52a"; }
+.bi-facebook::before { content: "\f344"; }
+.bi-twitter::before { content: "\f5ef"; }
+.bi-linkedin::before { content: "\f472"; }
+.bi-card-list::before { content: "\f227"; }
+.bi-chat-text-fill::before { content: "\f266"; }
+.bi-chevron-bar-expand::before { 
+  content: "\f275"; 
+  transform: rotate(90deg);
+}
+.bi-chevron-bar-down::before { content: "\f274"; }
 .bg-custom {
   background-image: linear-gradient(to right,#033e50,#025872);
   color: var(--bs-primary-text-on-navbar);

@@ -14,7 +14,7 @@ paginate = 6
 # paginatePath = "page"
 
 # Disqus
-# disqusShortname = "yourdiscussshortname"
+disqusShortname = "mazguru"
 
 # Google analytics
 # googleAnalytics = "UA-123-45"

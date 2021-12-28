@@ -23,8 +23,7 @@
     {{- partial "header.html" . -}}
     {{- partial "hooks/main-begin" . -}}
     {{- block "header" . -}}{{- end -}}
-    <main role="main" class="container{{ if default false .Site.Params.fullWidth }}-fluid{{ end }} mt-2">
-      
+    <main role="main" class="container{{ if default false .Site.Params.fullWidth }}-fluid{{ end }}">
       <div class="row content">
         {{- block "content" . -}}{{- end -}}
       </div>

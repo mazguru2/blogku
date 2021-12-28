@@ -8,6 +8,9 @@ hugo # if using a theme, replace by `hugo -t <yourtheme>`
 # pindah ke direktoru publik
 cd public
 
+# tambahkan perubahan ke Git
+git add -A
+
 
 # Buat sebuah commit baru
 msg="rebuilding site `date`"
@@ -17,7 +20,7 @@ fi
 git commit -m "$msg"
 
 # Push atau puload ke Github
-git push origin master
+git push -u origin master
 
 # Balik ke direktori sebelumnya
 cd ..

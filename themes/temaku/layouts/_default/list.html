@@ -1,0 +1,37 @@
+{{ define "header" }}
+
+<header>
+    <div class="jumbotron jumbotron-fluid bg-custom text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+          <h1>
+            
+              {{ i18n .Data.Plural }}:  {{ $tagname := split .Page.Title " " }}
+              {{ range $tagname }}
+                {{ . | humanize }}
+              {{ end }} 
+          </h1>
+          
+          <p>Terdapat <span class="badge badge-secondary">{{- $count := len .Pages -}}{{ $count }}</span> artikel dalam {{ i18n .Data.Plural }}
+            {{ $tagname := split .Page.Title " " }}
+            {{ range $tagname }}
+              {{ . | humanize }}
+            {{ end }} </p>
+          
+          </div>
+        </div>
+      </div>        
+    </div>
+    <div class='container'>
+      <div class='col-lg-12 px-3'>{{- partial "breadcrumb" . -}}</div>
+    </div>
+</header>
+
+{{ end }}
+{{ define "content" }}
+<div class="col-lg-8">
+  {{ partial "list" . }}
+</div>
+{{- partial "sidebar" . -}}
+{{ end }}

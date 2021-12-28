@@ -1,0 +1,67 @@
+{{ define "header" }}
+
+<header>
+    <div class="jumbotron jumbotron-fluid bg-custom text-white">
+    <div class="container">
+    <div class="row">
+    <div class="col text-center">
+    <h1>
+      
+        {{ $tagname := split .Page.Title " " }}
+        {{ range $tagname }}
+          {{ . | humanize }}
+        {{ end }} 
+    </h1>
+    <p class='lead'>{{ .Params.description }}</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </header>
+{{ end }}
+{{ define "content" }}
+<div class="container pb-5 pt-3">
+  <div class='row row-cols-1 d-flex justify-content-between'>
+    {{- range .Pages -}}
+    {{- $count := len .Pages -}}
+    <div class="col-md-12 col-lg-10 mx-auto mb-4">
+      <div class="card card-shadow" tabindex="0">
+      <div class="card-body p-4 d-flex flex-column flex-md-row align-items-center">
+        <div class="ml-auto flex-column justify-content-center" style="min-width:140px">
+        <a href="{{ .Page.Permalink }}">
+        {{- if .Params.Images -}}
+          <img class="rounded mb-4 mb-md-0" src="{{ index .Params.Images 0 | absURL }}" loading="lazy" alt="{{ partial "helpers/title" . }}"/ width='100%' style="object-fit:cover;height:140px">
+        {{else}}
+          <img class="rounded mb-4 mb-md-0" src="{{ absURL (default "images/icon_math.svg" .Site.Params.logo) }}" data-sizes="auto" loading="lazy" alt="{{ partial "helpers/title" . }}" style="object-fit:cover;width:140px;height:140px">
+        {{- end -}} 
+      </a>
+      </div>
+      <div class="mx-md-4">
+      <h2 class="h5"><a class="text-dark" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></h2>
+      {{ with .Site.Author }}
+      <p><small class="text-muted">By {{ .name }}</small></p>
+      {{ end }}
+      <p class="small text-secondary">{{ .Page.Params.description }}</p>
+      </div>
+
+      
+      
+      <div class="ml-auto flex-column d-none d-md-flex justify-content-center" style="min-width:160px">
+      <div class="my-2" title="Perkiraan waktu yang dihabiskan untuk belajar"><i class="bi bi-clock"></i> <b class="ml-1">
+       {{ mul 3 $count}}
+      </b> <span class="text-secondary small">Menit</span></div>
+      <div class="my-2"><i class="bi bi-journals"></i> <b class="ml-1">{{ $count }}</b> <span class="text-secondary small">Artikel</span></div>
+      <div class="my-2"><i class="bi bi-person" ></i> <b class="ml-1">SMA</b> <span class="text-secondary small">Level</span></div>
+      </div>
+      </div>
+      <div class="card-footer d-md-none d-flex flex-row justify-content-between small">
+      <div title="Perkiraan waktu yang dihabiskan untuk belajar"><i class="bi bi-clock"></i> <b>{{ mul 3 $count}}</b> <span class="text-secondary">Menit</span></div>
+      <div><i class="bi bi-journals"></i> <b>{{ $count }}</b> <span class="text-secondary">Artikel</span></div>
+      <div><i class="bi bi-person" ></i> <b>SMA</b> <span class="text-secondary">Level</span></div>
+      </div>
+      </div>
+      </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

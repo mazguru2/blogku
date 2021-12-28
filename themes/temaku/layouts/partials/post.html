@@ -1,0 +1,28 @@
+<article class="row card component mb-4 post">
+  {{- partial "post/panel" . -}}
+  <div class="card-header ">
+    <h1 class="card-title post-title">{{ partial "helpers/title" . }}</h1>
+    {{- partial "post/profil" . -}}
+  </div>
+  <div class="card-body">
+    {{- if .Params.Images -}}
+    {{- if .Params.Images -}}
+    <div class="text-center mb-3">
+        <img class="lazyload img-fluid lazyloaded" src="{{ index .Params.Images 0 | absURL }}" srcset="{{ index .Params.Images 0 | absURL }}" data-src="{{ index .Params.Images 0 | absURL }}" data-sizes="100vw" title="{{ .Title }}" alt="{{ .Title }}">
+    </div>
+    {{- end -}}
+    {{ end }}
+    {{- partial "hooks/content-begin" . -}}
+    {{- partial "post/share" . -}}
+    {{- partial "post/toc" . -}}
+    <div class="post-content mb-3">
+      {{- .Content -}}
+    </div>
+    {{- partial "hooks/content-end" . -}}
+  </div>
+  <div class="card-footer">
+    {{- partial "post/nav" . -}}
+  </div>
+</article>
+{{- partial "post/related-posts" . -}}
+{{- partial "post/comments" . -}}

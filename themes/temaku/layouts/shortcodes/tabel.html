@@ -1,0 +1,45 @@
+{{- $id := .Get 0 -}}
+<style>
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: {{ $id }}
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 2px;
+  text-align: {{ $id }}
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #001120;
+  color: white;
+}
+[data-theme=dark] table td, table th {
+  border: 1px solid #ddd;
+  padding: 2px;
+  text-align: {{ $id }}
+}
+
+[data-theme=dark]  table tr:nth-child(even){background-color: #f2f2f2;}
+
+[data-theme=dark] table tr:hover {background-color: rgb(252, 244, 244);}
+
+[data-theme=dark] table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #001120;
+  color: white;
+}
+[data-theme=dark] table {
+  color: white;
+}
+</style>

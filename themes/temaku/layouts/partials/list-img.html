@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row flex-row fex-column">
+  {{- range .Paginator.Pages -}}
+    <div class="col-lg-4 col-sm-12 col-xs-12 d-flex">
+      <div class="card surface card-shadow rounded post mb-3 w-100">
+        <div class='card-body'>
+        <a href="{{ .Permalink }}">
+        {{ if .Params.Images }}
+        <picture class="card-img-top card-image mb-3">
+          <img class='lazyload rounded lazyloaded center' src="{{ index .Params.Images 0 | absURL }}" loading="lazy" data-sizes="auto" height='180px' alt="{{ partial "helpers/title" . }}"/>
+        </picture>
+          {{else}}
+          <picture class="card-img-top card-image mb-3">
+            {{ partial "helpers/image" (dict "filename" "/images/tumbnail.png?height=180px" "alt" .Title "class" "lazyload rounded lazyloaded center" "resources" .Resources) }}
+          </picture>
+        {{- end -}}
+        </a>
+          <article>
+            <span class="meta-category">
+            </span>
+            <h6 class="card-title entry-title">
+              <a href="{{ .Permalink }}">{{ partial "helpers/title" . }}</a>
+            </h6>	
+            <div class="text-secondary small">
+              {{ partial "post/excerpt" . }}
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  {{- end -}}
+  </div>
+  {{- partial "hooks/list-end" . -}}
+  {{- partial "pagination" . -}}
+
+
+
+</div>

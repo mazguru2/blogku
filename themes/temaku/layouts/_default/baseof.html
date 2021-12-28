@@ -1,0 +1,40 @@
+<!doctype html>
+{{- $color := $.Site.Params.color -}}
+<html lang="{{ .Lang }}"
+  {{ if in (slice "light" "dark") $color }}{{ printf " data-mode=\"%s\"" $color | safeHTMLAttr }}{{ end }}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{- block "title" . -}}{{- partial "head/title" . -}}{{- end -}}</title>
+    {{- partial "head.html" . -}}
+    {{- block "head-end" . -}}{{- end -}}
+    {{- partial "hooks/head-end" . -}}
+  </head>
+  <body>
+    <div class="splash d-none">
+      <p class="fade-in">
+          <img src="https://2ndchance.mx/wp-content/uploads/2021/06/2ndchance-logo-animado-v1.0.0_animated-2.svg" alt="splash screen" width="200px">
+      </p>
+    </div>
+    {{- $bootstrapScript := resources.Get "bootstrap/template.js" | resources.ExecuteAsTemplate "js/bootstrap.js" . | minify -}}
+    <script>
+      {{- $bootstrapScript.Content | safeJS -}}
+    </script>
+    {{- partial "header.html" . -}}
+    {{- partial "hooks/main-begin" . -}}
+    {{- block "header" . -}}{{- end -}}
+    <main role="main" class="container{{ if default false .Site.Params.fullWidth }}-fluid{{ end }} mt-2">
+      
+      <div class="row content">
+        {{- block "content" . -}}{{- end -}}
+      </div>
+    </main>
+    {{- block "konten2" . -}}{{- end -}}
+    {{- block "konten3" . -}}{{- end -}}
+    {{- partial "hooks/main-end" . -}}
+    <div class='d-none d-lg-block'>
+      {{- partial "footer.html" . -}}
+    </div>
+    {{- partial "body-end" . -}}
+  </body>
+</html>

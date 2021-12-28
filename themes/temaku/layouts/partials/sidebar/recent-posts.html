@@ -1,0 +1,36 @@
+{{- $count := default 5 .Site.Params.recentPostCount -}}
+{{- if $count -}}
+<section class="recent-posts row mb-3">
+  <h4>🔥{{ T "recent_posts" }}</h4>
+  <div class='rounded p-0'>
+  <ul class='list-group surface p-0'>
+  {{- range first $count (where site.RegularPages "Type" "in" site.Params.mainSections) -}}
+    <a class='surface list-group-item list-group-item-action flex-column align-items-start' href="{{ .Permalink }}">
+      <div class="d-flex justify-content-between">
+        <div>
+          <h6>{{ partial "helpers/title" . }}</h6>
+          <small class="text-secondary align-middle">
+            {{- if and (default true (default .Site.Params.postDate .Params.postDate)) -}}
+            <span class="post-date">
+               {{ .Date.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) }}
+            </span>
+            {{- end -}}
+            {{- if and (default true (default .Site.Params.readingTime .Params.readingTime)) -}}
+            <span class="post-reading-time">
+              • {{ i18n "reading_time" . }}
+            </span>
+            {{- end -}}
+          </small>
+        </div>
+        {{- if .Params.Cover -}}
+          <img class="rounded lazyloaded" src="{{ index .Params.Cover 0 | absURL }}" data-sizes="auto" alt="{{ partial "helpers/title" . }}" loading='lazy' width="60" height="60" style='object-fit:cover'>
+        {{else}}
+          <img class="rounded lazyloaded" src="{{ absURL (default "images/cover/default.png" .Site.Params.logo) }}" loading='lazy' data-sizes="auto" alt="{{ partial "helpers/title" . }}" width="60" height="60">
+        {{- end -}}
+      </div>
+    </a>
+  {{- end -}}
+  </ul>
+</div>
+</section>
+{{- end -}}

@@ -1,0 +1,123 @@
+[[main]]
+  name = "Belajar"
+  identifier = "dropdown"
+  pre = '📖'
+  weight ='1'
+[[main]]
+  id = "more"
+  weight = 6
+  parent = "dropdown"
+  name = "More 🛰️"
+  url = "belajar"
+
+[[main]]
+  name = "Matematika SMA"
+  identifier = "matsma"
+  pre = '🎲'
+  weight ='2'
+[[main]]
+  id = "more2"
+  weight = 5
+  parent = "matsma"
+  name = "More 🚀"
+  url = "mat-sma"
+
+[[main]]
+  name = "Rumah Belajar"
+  identifier = "dropdown3"
+  pre = '<img src="/images/rumbel/logo2.png" class="d-inline icon lazyload lazyloaded" width="16" height="16">'
+  weight ='4'
+[[main]]
+  id = "sumber"
+  weight = 1
+  pre = '<img src="/images/rumbel/logo2.png" class="d-inline icon lazyload lazyloaded" width="16" height="16">'
+  parent = "dropdown3"
+  name = "Portal Rumah Belajar"
+  url = "https://belajar.kemdikbud.go.id/"
+[[main]]
+  id = "kelasmaya"
+  weight = 2
+  pre = '<img src="/images/rumbel/logo/kelasmaya.png" class="d-inline icon lazyload lazyloaded" width="16" height="16">'
+  parent = "dropdown3"
+  name = "Kelas Maya"
+  url = "https://kelasmaya.belajar.kemdikbud.go.id/kelasmaya"
+[[main]]
+  id = "sumberbelajar"
+  weight = 3
+  pre = '<img src="/images/rumbel/logo/sumberbelajar.png" class="d-inline icon lazyload lazyloaded" width="16" height="16">'
+  parent = "dropdown3"
+  name = "Sumber Belajar"
+  url = "https://sumber.belajar.kemdikbud.go.id/"
+[[main]]
+  id = "banksoal"
+  weight = 4
+  pre = '<img src="/images/rumbel/logo/banksoal.png" class="d-inline icon lazyload lazyloaded" width="16" height="16">'
+  parent = "dropdown3"
+  name = "Bank Soal"
+  url = "https://banksoal.belajar.kemdikbud.go.id/"
+[[main]]
+  id = "labmaya"
+  weight = 5
+  pre = '<img src="/images/rumbel/logo/labmaya.png" class="d-inline icon lazyload lazyloaded" width="16" height="16">'
+  parent = "dropdown3"
+  name = "Laboratorium Maya"
+  url = "https://vlab.belajar.kemdikbud.go.id/"
+
+[[main]]
+  name = "Pembatik"
+  identifier = "pembatik"
+  pre = '<img src="/images/pembatik/logo-pembatik.png" class="d-inline icon lazyload lazyloaded" width="16" height="16">'
+  weight ='5'
+[[main]]
+  id = "vlog"
+  weight = 2
+  pre = '🎥'
+  parent = "pembatik"
+  name = "Vlog"
+  url = "/pembatik/vlog"
+[[main]]
+  id = "artikel"
+  weight = 1
+  parent = "pembatik"
+  name = "Artikel"
+  pre = "📝"
+  url = "/pembatik"
+[[main]]
+  id = "sosisrumbel"
+  weight = 3
+  parent = "pembatik"
+  pre = '👨🏻‍🏫'
+  name = "Sosialisasi Rumah Belajar"
+  url = "/pembatik/sosis"
+
+  [[main]]
+  identifier = "video"
+  name = "Lainnya"
+  weight ='6'
+  pre = '🏷️'
+  [[main]]
+  parent = "video"
+  name = "Video"
+  weight ='1'
+  pre = '🎥'
+  url = 'https://www.youtube.com/channel/UCPqHmSdwMI5ah-1jrn00bBw'
+  [[main]]
+  parent = "video"
+  name = "Tutorial"
+  weight ='2'
+  pre = '🖌️'
+  url = '/tutorial'
+
+[[footer]]
+  name = "About"
+  identifier = "support"
+  url = "/about"
+  weight = 1
+[[footer]]
+  name = "Contact"
+  url = "/contact"
+  weight = 2
+[[footer]]
+  name = "Archive"
+  url = "/arsip"
+  weight = 3

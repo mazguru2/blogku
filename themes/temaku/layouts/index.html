@@ -1,0 +1,109 @@
+{{ define "header"}}
+<div class="jumbotron bg-custom pb-0 mb-0">
+  <div class='container'>
+    <div class="row">
+      <div class="col-lg-6 col-md-8 text-lg-left">
+        <h1 class="display-4 font-weight-normal">Sinau Matematika</h1>
+        <p class="lead">Mari belajar bersama agar kebahagiaan selalu dalam diri kita. Dengan belajar, seseorang akan menjadi pintar, dengan kepintaran seseorang akan merasa bahagia.</p>
+        <div class="mt-4">
+          <a href="/belajar/" class="btn btn-outline-primary mr-2">Mulai belajar</a>
+          <a href="#newsletter" class="btn btn-outline-light ">Join Newsletter</a>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block ml-auto">
+        {{ partial "helpers/image" (dict "filename" "/images/fotoku.png" "alt" .Title "class" "img-fluid float-end ms-2" "resources" .Resources) }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+{{ define "content" }}
+
+<div class="col-lg-12">
+  <div class="container">
+    <div class='text-center'>
+      <h3 class='fw-light'>🔥 Artikel Terbaru di {{with .Site.Params.brand}}{{ . }}{{end}}</h3>
+      <p class='lead text-muted'>Apa yang ingin kamu pelajari?</p>
+    </div>
+  </div>
+  {{ partial "list-img" . }}
+</div>
+{{ end }}
+{{ define "konten2" }}
+<div id='newsletter' class='jumbotron jumbotron-fluid bg-custom text-white'>
+<div class='container'>
+  <div class="row">
+    <div class="col-lg-8 col-md-9 text-lg-left">
+      <h3 class="font-weight-normal">📰 Newsletter</h3>
+      <p class='small col-lg-8'>Dapatkan info postingan terbaru dari Sinau Matematika dengan berlangganan newsletter via email.</p>
+      <form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=sinaumath', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+        <div class="mb-3 col-lg-8">
+          <label for="exampleInputEmail1" class="form-label">Masukkan Alamat Email</label>
+          <input type="text" name="email" class="form-control" id="exampleInputEmail1"  placeholder='email...' aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">Kami tidak akan pernah membagikan email Anda kepada orang lain.</div>
+        </div>
+        <input type="hidden" value="sinaumath" name="uri"/>
+        <input type="hidden" name="loc" value="en_US"/>
+        
+        <div class="form-group col-lg-8 text-center">
+          <input type="submit" class="btn btn-outline-primary w-50" value="Subscribe" />
+        </div>
+        <p>Delivered by <a href="https://feedburner.google.com" target="_blank">FeedBurner</a></p>
+      </form>
+    </div>
+    <div class="col-md-3 col-lg-4 d-none d-lg-block ml-auto">
+      <img class="ml-auto img-fluid lazyload" src="{{ absURL (default "images/newsletter.png" .Site.Params.newsletter) }}" alt="{{with .Site.Params.brand2}}{{ . }}{{end}}">
+    </div>
+  </div>
+</div>
+</div>
+{{ end }}
+{{ define "konten3" }}
+<div class='album py-3'>
+<div class='container'>
+  <div class='row text-center'>
+    <div class='col-12'>
+      <h2 class='h2'>Artikel Berdasarkan Kategori</h2>
+      <p class='lead'>Baca artikel sesuai dengan minat kamu</p>
+    </div>
+  </div>
+  
+  <div class='row flex-row'>
+    {{ range .Site.Taxonomies.kategori }}
+    {{ $postCount := len .Pages }}
+    <div class='list col-12 col-md-6 col-lg-4 mb-4 border-0'> 
+      <div class="card-header">
+        <span class="card-title h5 mb-0">{{ .Page.Title }}</span>
+        <span class='float-end badge badge-primary'>{{ $postCount }} Artikel</span>
+      </div>
+      <div class="list-group">
+        {{ range first 3 .Pages }}
+        <a href="{{ .Page.Permalink }}" class="list-group-item surface d-flex justify-content-between align-items-center">
+          <div class="w-100">
+            <h5 class="mb-1">{{ partial "helpers/title" . }}</h5>
+            <small class="text-secondary align-middle">
+              {{- if and (default true (default .Site.Params.postDate .Params.postDate)) -}}
+              <span class="post-date">
+                 {{ .Date.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) }}
+              </span>
+              {{- end -}}
+              {{- if and (default true (default .Site.Params.readingTime .Params.readingTime)) -}}
+              <span class="post-reading-time">
+                • {{ i18n "reading_time" . }}
+              </span>
+              {{- end -}}
+            </small>
+          </div>
+          <img class="rounded lazyload ml-3 lazyloaded" src="{{ index .Params.Cover 0 | absURL }}" data-sizes="auto" alt="{{ partial "helpers/title" . }}" width="60" height='60' style='object-fit:cover'>
+        </a>
+        {{ end }}
+      </div>
+      <div class="mx-auto mt-auto card-footer">
+        <small><a class="pull-right" href="{{ .Page.Permalink }}">Lihat Semua ➜</a></small>
+      </div>
+    </div>       
+    {{ end }}
+  </div>
+</div>
+</div>
+{{ end }}

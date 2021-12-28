@@ -1,0 +1,50 @@
+{{ define "header" }}
+
+<header>
+    <div class="jumbotron jumbotron-fluid bg-custom text-white">
+    <div class="container">
+    <div class="row">
+    <div class="col">
+      <h2 class="h4 mb-4 text-light text-center">Temukan apa yang kamu minati...</h2>
+    </div>
+    </div>
+    </div>
+    </div>
+    </header>
+<div class='container px-3'>{{- partial "breadcrumb" . -}}</div>
+{{ end }}
+{{ define "content" }}
+
+      <div class="col-md-12">
+      {{- range .Data.Terms.ByCount -}}
+      {{- $count := len .Pages -}}
+            <a class='btn btn-outline-primary btn-sm m-1' href="{{ .Page.Permalink }}">{{ .Page.Title }} <span class="badge badge-primary rounded-pill"> {{ i18n "post_count" (dict "Count" $count) }}</span></a>
+      {{- end -}}
+      </div>
+<div class='container mb-5'>
+  <div class='row'>
+    <div class="col-md-6 col-lg-6 text-center mb-5">
+      <img src="/images/list-image.svg" data-src="/images/list-image.svg" width="400" class="img-fluid lazyload lazyloaded" alt="Topik dan Kategori">
+     </div>
+     <div class='col-md-6'>
+      <h5>Tidak menemukan topik yang kamu cari? kirim masukan kepada kami agar kami dapat segera membuatnya</h5>
+      <form action="https://formspree.io/f/xbjqqjeb" method="POST">
+        <input type="hidden" name="_language" value="id">
+        <input type="hidden" name="_subject" value="[Request] Topik di Sinau Matematika">
+        <input type="hidden" name="_next" value="https://www.sinmat.my.id/topik">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input class="form-control" type="email" name="_replyto" placeholder="Alamat Email">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Topik</label>
+          <textarea class="form-control" name="message" placeholder="Topik apa yang kamu minta?"></textarea>
+        </div>
+        <input class="btn btn-success w-100" type="submit" value="Kirim">
+      </form>
+     </div>
+  </div>
+  
+</div>
+{{ end }}

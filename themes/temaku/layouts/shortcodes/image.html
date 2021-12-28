@@ -1,0 +1,6 @@
+{{- $id := .Get 0 -}}
+{{- $class := .Get 1 -}}
+{{- $style := .Get 2 -}}
+<div class="text-center">
+  <img class="{{ $class }}" style='{{ $style }}' src="{{ $id }}">
+</div>

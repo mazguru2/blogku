@@ -1,0 +1,25 @@
+<section class="recent-posts row mb-3">
+  <h4>📚 Belajar lainnya</h4>
+  <div class='rounded p-0'>
+  <ul class='list-group p-0'>
+    {{ range .Site.Sections }}
+      {{ range .Sections }}
+      <a class='surface list-group-item list-group-item-action flex-column align-items-start' href="{{ .Permalink }}">
+        <div class="row">
+          <div class="col-12">
+              <div class="align-middle">
+              {{- if .Params.Images -}}
+              <img class="icon" alt="{{ .Title }}" src="{{ index .Params.Images 0 | absURL }}" data-sizes="auto" loading="lazy" width="15px" height="15px"/>
+              {{else}}
+                <img class='icon' src="{{ absURL (default "/images/logo.png" .Site.Params.logo2) }}" data-sizes="auto" loading="lazy" alt="{{ .Title }}">
+              {{- end -}} 
+              {{ .Title }} 
+              </div>
+          </div>
+        </div>
+      </a>
+      {{- end -}}
+    {{- end -}}
+  </ul>
+</div>
+</section>

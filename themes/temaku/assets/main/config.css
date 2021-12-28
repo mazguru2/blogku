@@ -18,7 +18,7 @@
 {{- $fixedHeader := default true .Site.Params.fixedHeader -}}
 
 main {
-  margin-top: {{ if $fixedHeader }}84px{{ else }}20px{{ end }};
+  margin-top: {{ if $fixedHeader }}50px{{ else }}20px{{ end }};
 }
 
 :target::before {

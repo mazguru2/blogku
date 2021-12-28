@@ -3,8 +3,10 @@
 {{- $toc := .TableOfContents -}}
 {{- $valid := and $toc (and (ne $toc "<nav id=\"TableOfContents\"></nav>") (gt .WordCount $wordCount)) -}}
 {{- if and $enable $valid -}}
-<div class="post-toc mb-4" id="postTOC">
+<div class="offcanvas offcanvas-end surface w-75" id="postTOC">
+  <div class='offcanvas-body'>
   <h2 class="mb-4">{{ i18n "table_of_contents" }}</h2>
   {{ $toc }}
+</div>
 </div>
 {{- end -}}

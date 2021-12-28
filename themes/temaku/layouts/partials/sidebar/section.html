@@ -9,9 +9,9 @@
           <div class="col-12">
               <div class="align-middle">
               {{- if .Params.Images -}}
-              <img class="icon" alt="{{ .Title }}" src="{{ index .Params.Images 0 | absURL }}" data-sizes="auto" loading="lazy" width="15px" height="15px"/>
+              <img class="icon" alt="{{ .Title }}" src="{{ index .Params.Images 0 | absURL }}" data-sizes="auto" loading="lazy" width="15px" height="15px" style="object-fit: cover;"/>
               {{else}}
-                <img class='icon' src="{{ absURL (default "/images/logo.png" .Site.Params.logo2) }}" data-sizes="auto" loading="lazy" alt="{{ .Title }}">
+              <img class='icon' alt="{{ .Title }}" src="{{ absURL (default "/images/logo.png" .Site.Params.logo2) }}" data-sizes="auto" loading="lazy" width="15px" height="15px" style="object-fit: cover;">
               {{- end -}} 
               {{ .Title }} 
               </div>

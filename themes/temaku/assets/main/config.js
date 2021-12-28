@@ -8,3 +8,4 @@ window.params = {
         theme: {{ default "" $params.utterances.theme | printf "%q" }},
     },
 }
+localStorage.setItem("bs-palette", "sinau")
